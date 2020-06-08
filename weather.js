@@ -19,5 +19,32 @@ function getCityData(data){
         var latAndLonData=apiData(url1) 
         return(latAndLonData)
     }) 
-}   
+    .then((latAndLonData)=>{
+        var weatherDetails={}
+        var weatherData=latAndLonData["data"]
+        var weather=weatherData["weather"]  
+        for(var i in weather) {
+            weatherId=weather[i]["id"]
+            weatherName=weather[i]["main"]
+            weatherDescirption=weather[i]["description"]
+        }
+        var cityId=weatherData["id"]
+        var cityName=weatherData["name"]
+        weatherDetails["cityId"]=cityId 
+        weatherDetails["cityName"]=cityName
+        weatherDetails["weather_id"]=weatherId
+        weatherDetails["status"]=weatherName
+        weatherDetails["discription"]=weatherDescirption
+        return(weatherDetails)
+    })
+    .then((weatherDetails)=>{
+        let data=fs.readFileSync('weatherCityDetails.json')
+        console.log(data)
+        
+    })
+    
+    
+}
 getCityData(response)
+
+
