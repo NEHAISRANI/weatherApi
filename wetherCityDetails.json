@@ -96,5 +96,12 @@
     "weather_id": 741,
     "status": "Fog",
     "discription": "fog"
+  },
+  {
+    "cityId": 4381444,
+    "cityName": "Clay",
+    "weather_id": 741,
+    "status": "Fog",
+    "discription": "fog"
   }
 ]

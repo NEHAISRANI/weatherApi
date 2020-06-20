@@ -1,6 +1,7 @@
 const raw_input=require('readline-sync').question;
 const cityInput=raw_input("enter the city name....:")
 var bodyParser=require('body-parser');
+const fs=require("fs");
 
 function apiData(weatherApi){
     const axios=require('axios');
@@ -19,10 +20,10 @@ function getCityData(data){
         var latAndLonData=apiData(url1) 
         return(latAndLonData)
     }) 
-    .then((latAndLonData)=>{
+    .then((latAndLonData)=>{ 
         var weatherDetails={}
         var weatherData=latAndLonData["data"]
-        var weather=weatherData["weather"]  
+        var weather=weatherData["weather"]
         for(var i in weather) {
             weatherId=weather[i]["id"]
             weatherName=weather[i]["main"]
@@ -37,14 +38,19 @@ function getCityData(data){
         weatherDetails["discription"]=weatherDescirption
         return(weatherDetails)
     })
-    .then((weatherDetails)=>{
+    .then((weatherDetails)=>{  
         let data=fs.readFileSync('weatherCityDetails.json')
-        console.log(data)
-        
-    })
-    
-    
-}
-getCityData(response)
+        data=data.toString();
+        let Data= JSON.parse(data)  
+        Data.push(weatherDetails)
 
+        for(index in Data){
+            if (Data[index]["cityName"]==cityInput){
+                fs.writeFileSync("wetherCityDetails.json", JSON.stringify(Data,null,2))
+            }
+        }console.log("this data is already taken")        
+        
+    }) 
+} 
+getCityData(response)
 
