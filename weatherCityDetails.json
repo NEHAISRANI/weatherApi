@@ -18,7 +18,7 @@
     "cityName": "Kannod",
     "id": 803,
     "status": "Clouds",
-    "discription": "broken clouds"
+    "discription": "broken clouds"  
   },
   {
     "cityId": 1262180,
@@ -96,5 +96,12 @@
     "weather_id": 741,
     "status": "Fog",
     "discription": "fog"
+  },
+  {
+    "cityId": 1275339,
+    "cityName": "Mumbai",
+    "weather_id": 721,
+    "status": "Haze",
+    "discription": "haze"
   }
 ]

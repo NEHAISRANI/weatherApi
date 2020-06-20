@@ -46,7 +46,7 @@ function getCityData(data){
 
         for(index in Data){
             if (Data[index]["cityName"]==cityInput){
-                fs.writeFileSync("wetherCityDetails.json", JSON.stringify(Data,null,2))
+                fs.writeFileSync("weatherCityDetails.json", JSON.stringify(Data,null,2))
             }
         }console.log("this data is already taken")        
         
